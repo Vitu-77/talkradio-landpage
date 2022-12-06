@@ -11,14 +11,14 @@ export interface ButtonProps {
 }
 
 enum Bg {
-	WHITE = '#FFFFF',
+	WHITE = '#FFFF',
 	BLUE = '#102B9C',
 	RED = '#C13935',
 	YELLOW = '#E7A62C',
 }
 
 enum Color {
-	WHITE = '#FFFFF',
+	WHITE = '#FFFF',
 	DARK = '#0D1317',
 }
 
@@ -53,7 +53,11 @@ export const Button: FC<ButtonProps> = ({
 	return (
 		<Container
 			onClick={onClick && onClick}
-			style={{ ...(style ?? {}), backgroundColor: bg, color }}>
+			style={{
+				...(style ?? {}),
+				backgroundColor: bg,
+				color,
+			}}>
 			{content}
 		</Container>
 	)

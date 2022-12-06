@@ -12,7 +12,7 @@ export const Container = styled.section`
 	}
 `
 
-export const Gradient = styled.div`
+export const Overlay = styled.div`
 	position: absolute;
 	width: 100%;
 	height: 100%;
