@@ -8,6 +8,10 @@ export const Container = styled.footer`
 	align-items: center;
 	flex-direction: column;
 	padding: 80px 0 40px 0;
+
+	@media (max-width: 512px) {
+		padding: 80px 24px 40px 24px;
+	}
 `
 
 export const Logo = styled(Image)`
@@ -34,6 +38,16 @@ export const ContentContainer = styled.article`
 		font-weight: 400;
 		text-align: center;
 	}
+
+	@media (max-width: 512px) {
+		& h3 {
+			font-size: 32px;
+		}
+
+		& p {
+			width: 90vw;
+		}
+	}
 `
 
 export const SocialMedias = styled.div`
@@ -46,12 +60,23 @@ export const SocialMedias = styled.div`
 		margin: 0 20px;
 		cursor: pointer;
 	}
+
+	@media (max-width: 512px) {
+		& > a {
+			margin: 0 10px;
+		}
+	}
 `
 
 export const Copyright = styled.span`
 	text-align: center;
 	font-size: 15px;
-	color: var(--grey);
+	color: var(--gray);
+	align-self: flex-start;
+
+	@media (max-width: 512px) {
+		text-align: left;
+	}
 `
 
 export const ConsentmentsArea = styled.div`
@@ -65,7 +90,16 @@ export const ConsentmentsArea = styled.div`
 		text-decoration: underline;
 		font-weight: 400;
 		font-size: 12px;
-		color: grey;
+		color: gray;
 		cursor: pointer;
+	}
+
+	@media (max-width: 512px) {
+		flex-direction: column;
+		align-items: flex-start;
+
+		& > span {
+			margin-bottom: 12px;
+		}
 	}
 `

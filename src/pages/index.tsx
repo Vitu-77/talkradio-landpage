@@ -2,6 +2,7 @@ import { ContactUs } from '@components/ContactUs'
 import { Footer } from '@components/Footer'
 import { Header } from '@components/Header'
 import { HomeCover } from '@components/HomeCover'
+import { Partners } from '@components/Partners'
 import Head from 'next/head'
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
 			<Header />
 			<HomeCover />
 			<ContactUs />
+			<Partners />
 			<Footer />
 		</div>
 	)

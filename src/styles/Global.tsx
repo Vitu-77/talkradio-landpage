@@ -7,8 +7,8 @@ export const GlobalStyles = createGlobalStyle`
     --yellow-primary: #E7A62C;
     --white: #FFFFFF;
     --black: #000000;
-    --grey: #808289;
-    --grey-light: #F2F2F9;
+    --gray: #808289;
+    --gray-light: #F2F2F9;
   }
 
   * {
@@ -18,7 +18,8 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
   }
 
-  html {
+  html, body {
+    overflow-x: hidden;
     height: 100%;
   }
 `

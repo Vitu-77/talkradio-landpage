@@ -44,7 +44,7 @@ export const TextSection = styled.article`
 	}
 
 	& p {
-		color: var(--grey);
+		color: var(--gray);
 		font-weight: 400;
 		font-size: 16px;
 		width: 400px;
