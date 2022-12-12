@@ -40,12 +40,15 @@ export const ContentContainer = styled.article`
 	}
 
 	@media (max-width: 512px) {
+		width: 100%;
+		margin-bottom: 60px;
+
 		& h3 {
 			font-size: 32px;
 		}
 
 		& p {
-			width: 90vw;
+			/* width: 90vw; */
 		}
 	}
 `
@@ -53,7 +56,7 @@ export const ContentContainer = styled.article`
 export const SocialMedias = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	margin-top: 55px;
 
 	& > a {
@@ -62,9 +65,9 @@ export const SocialMedias = styled.div`
 	}
 
 	@media (max-width: 512px) {
-		& > a {
-			margin: 0 10px;
-		}
+		border-bottom: 1px solid #3d444e;
+		width: 100%;
+		padding-bottom: 50px;
 	}
 `
 
@@ -90,7 +93,7 @@ export const ConsentmentsArea = styled.div`
 		text-decoration: underline;
 		font-weight: 400;
 		font-size: 12px;
-		color: gray;
+		color: var(--gray);
 		cursor: pointer;
 	}
 
