@@ -1,12 +1,16 @@
 import React, { FC, useCallback } from 'react'
 import { Container } from './styles'
+import { BiLoaderAlt } from 'react-icons/bi'
 
 export type ButtonVariants = 'white' | 'red' | 'yellow' | 'blue'
 
-export interface ButtonProps {
+export type ButtonProps = {
+	type?: 'button' | 'submit' | 'reset'
 	variant: ButtonVariants
 	content: string
 	style?: React.CSSProperties
+	loading?: boolean
+	disabled?: boolean
 	onClick?: () => any
 }
 
@@ -32,6 +36,9 @@ export const Button: FC<ButtonProps> = ({
 	content,
 	onClick,
 	style,
+	type,
+	disabled,
+	loading,
 }) => {
 	const getStyle = useCallback((): GetStyleResponse => {
 		switch (variant) {
@@ -50,15 +57,28 @@ export const Button: FC<ButtonProps> = ({
 
 	const { bg, color } = getStyle()
 
+	const handleClick = useCallback(() => {
+		if (disabled || loading) {
+			return
+		}
+
+		if (typeof onClick === 'function') {
+			onClick()
+		}
+	}, [onClick, disabled, loading])
+
 	return (
 		<Container
-			onClick={onClick && onClick}
+			type={type}
+			disabled={disabled || loading}
+			onClick={() => handleClick()}
 			style={{
 				...(style ?? {}),
 				backgroundColor: bg,
 				color,
 			}}>
-			{content}
+			{loading && <BiLoaderAlt color='#FFF' size={25} />}
+			{!loading && content}
 		</Container>
 	)
 }

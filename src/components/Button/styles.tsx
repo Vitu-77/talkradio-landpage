@@ -1,6 +1,15 @@
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 
-export const Container = styled.button`
+const animation = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`
+
+export const Container = styled.button<{ disabled?: boolean }>`
 	height: 56px;
 	display: flex;
 	flex-direction: row;
@@ -13,4 +22,17 @@ export const Container = styled.button`
 	border-radius: 8px;
 	cursor: pointer;
 	outline: none;
+
+	& svg {
+		animation: ${animation};
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
+	}
+
+	${({ disabled }) =>
+		disabled &&
+		css`
+			pointer-events: none !important;
+			opacity: 0.7;
+		`}
 `

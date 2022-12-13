@@ -1,17 +1,9 @@
 import { FC } from 'react'
-import {
-	ConsentmentsArea,
-	Container,
-	ContentContainer,
-	Copyright,
-	Logo,
-	SocialMedias,
-} from './styles'
+import { Container, ContentContainer, Logo, SocialMedias } from './styles'
 import { SocialIcon } from 'react-social-icons'
+import { FooterConsentments } from '@components/FooterConsentments'
 
-export const Footer: FC = () => {
-	const year = new Date().getUTCFullYear()
-
+export const HomeFooter: FC = () => {
 	return (
 		<Container>
 			<ContentContainer>
@@ -30,16 +22,7 @@ export const Footer: FC = () => {
 				</SocialMedias>
 			</ContentContainer>
 
-			<Copyright>© {year} Talk Radio todos os direitos reservados</Copyright>
-
-			<ConsentmentsArea>
-				<span>Termos de Uso</span>
-				<span>Política de Privacidade</span>
-				<span>
-					Política Corporativa de Segurança da Informação e Cibernética
-				</span>
-				<span>Cookies que Utilizamos</span>
-			</ConsentmentsArea>
+			<FooterConsentments />
 		</Container>
 	)
 }

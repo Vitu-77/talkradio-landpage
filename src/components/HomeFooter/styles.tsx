@@ -23,7 +23,7 @@ export const ContentContainer = styled.article`
 	align-items: center;
 	flex-direction: column;
 	width: 540px;
-	margin-bottom: 120px;
+	margin-bottom: 80px;
 
 	& h3 {
 		color: var(--white);
@@ -68,41 +68,5 @@ export const SocialMedias = styled.div`
 		border-bottom: 1px solid #3d444e;
 		width: 100%;
 		padding-bottom: 50px;
-	}
-`
-
-export const Copyright = styled.span`
-	text-align: center;
-	font-size: 15px;
-	color: var(--gray);
-	align-self: flex-start;
-
-	@media (max-width: 512px) {
-		text-align: left;
-	}
-`
-
-export const ConsentmentsArea = styled.div`
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	margin-top: 60px;
-
-	& span {
-		text-decoration: underline;
-		font-weight: 400;
-		font-size: 12px;
-		color: var(--gray);
-		cursor: pointer;
-	}
-
-	@media (max-width: 512px) {
-		flex-direction: column;
-		align-items: flex-start;
-
-		& > span {
-			margin-bottom: 12px;
-		}
 	}
 `
