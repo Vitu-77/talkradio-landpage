@@ -13,7 +13,7 @@ export const Label = styled.span`
 	margin-bottom: 5px;
 `
 
-export const Input = styled.input<{ variant: 'blue' | 'yellow' }>`
+export const Input = styled.input<{ variant: 'blue' | 'yellow' | 'red' }>`
 	width: 100%;
 	border: 1px solid var(--gray);
 	height: 48px;
@@ -47,10 +47,21 @@ export const Input = styled.input<{ variant: 'blue' | 'yellow' }>`
 				}
 			`
 		}
+
+		if (variant === 'red') {
+			return css`
+				&:focus {
+					border-color: var(--red-primary);
+					box-shadow: 0px 0px 1px 3px #c139353b;
+				}
+			`
+		}
 	}}
 `
 
-export const MaskedInput = styled(InputMask)<{ variant: 'blue' | 'yellow' }>`
+export const MaskedInput = styled(InputMask)<{
+	variant: 'blue' | 'yellow' | 'red'
+}>`
 	width: 100%;
 	border: 1px solid var(--gray);
 	height: 48px;
@@ -81,6 +92,15 @@ export const MaskedInput = styled(InputMask)<{ variant: 'blue' | 'yellow' }>`
 				&:focus {
 					border-color: var(--yellow-primary);
 					box-shadow: 0px 0px 1px 3px #9a9c1045;
+				}
+			`
+		}
+
+		if (variant === 'red') {
+			return css`
+				&:focus {
+					border-color: var(--red-primary);
+					box-shadow: 0px 0px 1px 3px #c139353b;
 				}
 			`
 		}

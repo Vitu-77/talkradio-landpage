@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
-import { Container, Links, Link, Logo } from './styles'
+import NextLink from 'next/link'
+import { Container, Dropdowns, Dropdown, Logo, Links } from './styles'
 import { FiChevronDown } from 'react-icons/fi'
 import {
 	HiOutlineAdjustments,
@@ -19,13 +20,13 @@ export const Header: FC = () => {
 		<Container>
 			<Logo alt='talk-radio' src='/logo-header.svg' width={80} height={50} />
 
-			<Links>
-				<Link>
+			<Dropdowns>
+				<Dropdown>
 					<span>Talk Rádio</span>
 					<FiChevronDown />
-				</Link>
+				</Dropdown>
 
-				<Link
+				<Dropdown
 					onMouseOver={() => setVisibleMenus({ ...visibleMenus, radio: true })}
 					onMouseOut={() => setVisibleMenus({ ...visibleMenus, radio: false })}>
 					<span>Talk Play</span>
@@ -61,10 +62,14 @@ export const Header: FC = () => {
 							]}
 						/>
 					)}
-				</Link>
-			</Links>
+				</Dropdown>
+			</Dropdowns>
 
-			<a>Login na intranet</a>
+			<Links>
+				<NextLink href='/login-intranet'>Login na intranet</NextLink>
+				<div className='divider'></div>
+				<NextLink href='/segunda-via-boletos'>2ª via de boletos</NextLink>
+			</Links>
 		</Container>
 	)
 }

@@ -10,7 +10,7 @@ import { Programs } from '@components/Programs'
 
 export default function Home() {
 	return (
-		<div>
+		<>
 			<Head>
 				<title>Talk Rádio +</title>
 				<meta
@@ -27,6 +27,6 @@ export default function Home() {
 			<Partners />
 			<ContactUsForm />
 			<HomeFooter />
-		</div>
+		</>
 	)
 }

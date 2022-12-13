@@ -10,7 +10,7 @@ export type InputProps = {
 	label: string
 	placeholder: string
 	style?: CSSProperties
-	variant?: 'blue' | 'yellow'
+	variant?: 'blue' | 'yellow' | 'red'
 	type?: string
 	onChange: (value: string) => void
 }

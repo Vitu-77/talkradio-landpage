@@ -19,17 +19,32 @@ export const Container = styled.header`
 		color: var(--blue-primary);
 		font-size: 15px;
 		font-weight: 700;
+		text-decoration: none;
+	}
+`
+
+export const Links = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	& > div.divider {
+		height: 20px;
+		width: 1px;
+		background: var(--blue-primary);
+		opacity: 0.5;
+		margin: 0 24px;
 	}
 `
 
 export const Logo = styled(Image)``
 
-export const Links = styled.div`
+export const Dropdowns = styled.div`
 	display: flex;
 	align-items: center;
 `
 
-export const Link = styled.span`
+export const Dropdown = styled.span`
 	color: var(--black);
 	position: relative;
 	display: flex;
