@@ -34,7 +34,7 @@ const images = [
 
 export const Partners: FC = () => {
 	return (
-		<Container>
+		<Container id='parceiros'>
 			<h2>Nossas afiliadas</h2>
 
 			<InfiniteSlide images={images} />

@@ -5,10 +5,11 @@ export const Container = styled.ul`
 	top: 100%;
 	left: 50%;
 	transform: translateX(-50%);
-	width: 250px;
+	width: 300px;
 	z-index: 100000;
 	border-radius: 8px;
 	background: var(--gray-light);
+	padding: 8px;
 `
 
 export const Item = styled.li`
@@ -17,14 +18,7 @@ export const Item = styled.li`
 	align-items: center;
 	padding: 12px 15px;
 	cursor: pointer;
-
-	&:first-child {
-		border-radius: 8px 8px 0 0;
-	}
-
-	&:last-child {
-		border-radius: 0 0 8px 8px;
-	}
+	border-radius: 8px;
 
 	&:hover {
 		background-color: #e3e3e3;
@@ -51,6 +45,7 @@ export const Item = styled.li`
 		& > span {
 			color: var(--gray);
 			font-size: 12px;
+			font-weight: 400;
 			margin-top: 2px;
 		}
 	}

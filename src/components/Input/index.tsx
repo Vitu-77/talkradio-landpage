@@ -12,6 +12,7 @@ export type InputProps = {
 	style?: CSSProperties
 	variant?: 'blue' | 'yellow' | 'red'
 	type?: string
+	error?: string
 	onChange: (value: string) => void
 }
 
@@ -26,16 +27,19 @@ export const Input: FC<InputProps> = ({
 	style,
 	variant,
 	type,
+	error,
 }) => {
 	return (
 		<Container style={style}>
 			<Label>{label}</Label>
 			<StyledInput
+				error={error}
 				type={type ?? 'text'}
 				variant={variant ?? 'blue'}
 				placeholder={placeholder}
 				onChange={(e) => onChange(e.target.value)}
 			/>
+			{error && <small>{error}</small>}
 		</Container>
 	)
 }
@@ -47,16 +51,21 @@ export const MaskedInput: FC<MaskedInputProps> = ({
 	placeholder,
 	style,
 	variant,
+	error,
+	type,
 }) => {
 	return (
 		<Container style={style}>
 			<Label>{label}</Label>
 			<StyledMaskedInput
+				error={error}
+				type={type}
 				variant={variant ?? 'blue'}
 				mask={mask}
 				placeholder={placeholder}
 				onChange={(e) => onChange(e.target.value)}
 			/>
+			{error && <small>{error}</small>}
 		</Container>
 	)
 }

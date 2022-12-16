@@ -34,7 +34,7 @@ export const Carousel: FC<CarouselProps> = ({ page, items }) => {
 			carousel.updateButtonState({ btn: 'PREV', state: false })
 			carousel.updateButtonState({ btn: 'NEXT', state: false })
 
-			if (scroll + width >= scrollWidth) {
+			if (Math.ceil(scroll + width) >= scrollWidth) {
 				carousel.updateButtonState({
 					btn: 'NEXT',
 					state: true,

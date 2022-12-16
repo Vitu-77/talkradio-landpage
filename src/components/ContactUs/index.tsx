@@ -15,7 +15,7 @@ import bgMobile from '@assets/contact-us-mobile.png'
 
 export const ContactUs: FC = () => {
 	return (
-		<Container>
+		<Container id='entramos-em-contato'>
 			<TextSection>
 				<h4>Cliente VIP</h4>
 				<h2>Deixe o trabalho duro com a gente</h2>
@@ -23,11 +23,14 @@ export const ContactUs: FC = () => {
 					Nós podemos te ajudar de forma ainda mais direta, conte com nossa
 					produtora para alavancar a sua rádio
 				</p>
-				<Button
-					content='Fale conosco'
-					variant='red'
-					style={{ width: 'max-content' }}
-				/>
+
+				<a className='ancor' href='#entre-em-contato'>
+					<Button
+						content='Fale conosco'
+						variant='red'
+						style={{ width: 'max-content' }}
+					/>
+				</a>
 			</TextSection>
 
 			<ImageContainer>

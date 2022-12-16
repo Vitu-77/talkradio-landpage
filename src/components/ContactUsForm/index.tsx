@@ -1,10 +1,13 @@
+import { useCallback, useState } from 'react'
+import { useRouter } from 'next/router'
+
 import { Button } from '@components/Button'
 import { Input, MaskedInput } from '@components/Input'
-import { useCallback, useState } from 'react'
 import { Container, Form, FormContainer } from './styles'
 
 import img from '@assets/contact-us-form.png'
 import Image from 'next/image'
+import { api } from '@http/api'
 
 type Errors = {
 	phone: boolean
@@ -12,9 +15,14 @@ type Errors = {
 }
 
 export const ContactUsForm = () => {
+	const router = useRouter()
 	const [phone, setPhone] = useState('')
 	const [email, setEmail] = useState('')
-	const [errors, setErrors] = useState({ phone: false, email: false })
+	const [isLoading, setIsLoading] = useState(false)
+	const [errors, setErrors] = useState<Errors | null>({
+		phone: false,
+		email: false,
+	})
 
 	const validateForm = useCallback((): Errors | null => {
 		const errors: Errors = {
@@ -25,22 +33,37 @@ export const ContactUsForm = () => {
 		return errors.email || errors.phone ? errors : null
 	}, [email, phone])
 
-	const handleSubmit = useCallback(() => {
+	const handleSubmit = useCallback(async () => {
 		const errors = validateForm()
+		setErrors(errors)
 
 		if (errors) {
-			return setErrors(errors)
+			return
 		}
 
-		const data = { phone, email }
-	}, [validateForm, phone, email, errors])
+		setIsLoading(true)
+		const data = { phone: phone.toString(), email, origin: 'TALK-RADIO' }
+
+		try {
+			await api.post('/contact-requests', data)
+
+			alert(
+				'Cadastro feito com sucesso, nossa equipe entrará em contato com você em breve.'
+			)
+			router.reload()
+		} catch (error) {
+			console.log(error)
+		}
+
+		setIsLoading(false)
+	}, [validateForm, phone, email, router])
 
 	const handleChangePhone = useCallback((value: string) => {
 		setPhone(value.replaceAll(/[_ ()]/g, '').replaceAll('-', ''))
 	}, [])
 
 	return (
-		<Container>
+		<Container id='entre-em-contato'>
 			<FormContainer>
 				<h3>Nós falamos com você!</h3>
 				<Form>
@@ -50,6 +73,7 @@ export const ContactUsForm = () => {
 						placeholder='DDD + Telefone'
 						onChange={(value) => handleChangePhone(value)}
 						style={{ marginBottom: '36px' }}
+						error={errors?.phone ? 'Informe seu whatsapp' : undefined}
 					/>
 
 					<Input
@@ -57,6 +81,7 @@ export const ContactUsForm = () => {
 						placeholder='Seu email'
 						onChange={(value) => setEmail(value)}
 						style={{ marginBottom: '36px' }}
+						error={errors?.email ? 'Informe seu email corretamente' : undefined}
 					/>
 
 					<Button
@@ -64,6 +89,7 @@ export const ContactUsForm = () => {
 						content='Enviar'
 						variant='blue'
 						onClick={handleSubmit}
+						loading={isLoading}
 					/>
 				</Form>
 			</FormContainer>

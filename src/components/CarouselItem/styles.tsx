@@ -88,11 +88,12 @@ export const Body = styled.section`
 	}
 
 	@media (max-width: 512px) {
-		& > h4 {
+		& div.text-container > h4 {
 			font-size: 24px;
+			line-height: 34px;
 		}
 
-		& > button {
+		& button {
 			font-size: 12px;
 			padding-left: 12px !important;
 			padding-right: 12px !important;

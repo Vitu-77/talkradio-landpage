@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { FiMenu } from 'react-icons/fi'
 import styled from 'styled-components'
 
 export const Container = styled.header`
@@ -35,6 +36,10 @@ export const Links = styled.div`
 		opacity: 0.5;
 		margin: 0 24px;
 	}
+
+	@media (max-width: 768px) {
+		display: none;
+	}
 `
 
 export const Logo = styled(Image)``
@@ -42,6 +47,10 @@ export const Logo = styled(Image)``
 export const Dropdowns = styled.div`
 	display: flex;
 	align-items: center;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
 `
 
 export const Dropdown = styled.span`
@@ -60,5 +69,17 @@ export const Dropdown = styled.span`
 
 	& > span {
 		margin-right: 6px;
+	}
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+`
+
+export const MobileMenuToggle = styled(FiMenu)`
+	display: none;
+
+	@media (max-width: 768px) {
+		display: block;
 	}
 `

@@ -21,5 +21,10 @@ export const GlobalStyles = createGlobalStyle`
   html, body {
     overflow-x: hidden;
     height: 100%;
+    scroll-behavior: smooth;
+  }
+
+  a.ancor {
+    text-decoration: none;
   }
 `

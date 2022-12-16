@@ -19,8 +19,6 @@ export const CarouselItem: FC<CarouselItemProps> = ({
 
 	const handlePlay = useCallback(
 		(props: StartProps) => {
-			console.log('AOSICJOASI')
-
 			if (props && player.start) {
 				player.start(props)
 			}
@@ -68,7 +66,9 @@ export const CarouselItem: FC<CarouselItemProps> = ({
 					<p>{description}</p>
 				</div>
 
-				<Button variant='red' content='Quero esse programa na minha rádio' />
+				<a className='ancor' href='#entre-em-contato'>
+					<Button variant='red' content='Quero esse programa na minha rádio' />
+				</a>
 			</Body>
 		</Container>
 	)
