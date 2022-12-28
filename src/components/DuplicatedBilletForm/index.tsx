@@ -1,6 +1,6 @@
+import { FC, FormEvent, useCallback, useState } from 'react'
 import { Button } from '@components/Button'
 import { MaskedInput } from '@components/Input'
-import { useCallback, useState } from 'react'
 import {
 	Container,
 	Cover,
@@ -11,17 +11,71 @@ import {
 } from './styles'
 
 import coverBg from '@assets/duplicated-billet.png'
+import { api } from '@http/api'
 
-export const DuplicatedBilletForm = () => {
+export type Billet = {
+	ano: string
+	data_vencimento: string
+	link: string
+	mes: string
+	statusBoleto: string
+	tipo: string
+	valor: string
+}
+
+type Response = {
+	cnpj: string
+	bankSlips: Billet[]
+}
+
+type DuplicatedBilletFormProps = {
+	setBillets: (billets: Billet[]) => void
+}
+
+export const DuplicatedBilletForm: FC<DuplicatedBilletFormProps> = ({
+	setBillets,
+}) => {
 	const [cnpj, setCnpj] = useState('')
+	const [isLoading, setIsLoading] = useState(false)
 
 	const handleSetCNPJ = useCallback((cnpj: string) => {
-		setCnpj(cnpj.replaceAll(/./g, '').replaceAll(/-/g, '').replaceAll('/', ''))
+		setCnpj(
+			cnpj
+				.replaceAll('-', '')
+				.replaceAll('/', '')
+				.replaceAll('.', '')
+				.replaceAll('_', '')
+		)
 	}, [])
 
-	const handleSubmit = useCallback(async () => {
-		console.log({ cnpj })
-	}, [cnpj])
+	const handleSubmit = useCallback(
+		async (event?: FormEvent<HTMLFormElement>) => {
+			event?.preventDefault()
+
+			if (cnpj.length !== 14) {
+				return alert('CNPJ inválido')
+			}
+
+			setIsLoading(true)
+
+			try {
+				const response = await api.get<Response>(
+					`https://conteudoradiofonico.com.br/api/bank-slips/${cnpj}`
+				)
+
+				if (!response.data.bankSlips.length) {
+					alert('Não foram encontrados boletos nesse CNPJ, confira os dados')
+				}
+
+				setBillets(response.data.bankSlips)
+			} catch (error) {
+				return alert('Erro ao buscar os boletos, confira o CNPJ')
+			}
+
+			setIsLoading(false)
+		},
+		[cnpj, setBillets]
+	)
 
 	return (
 		<Container>
@@ -36,21 +90,21 @@ export const DuplicatedBilletForm = () => {
 					</p>
 				</TextZone>
 
-				<Form>
+				<Form onSubmit={handleSubmit}>
 					<MaskedInput
 						mask='99.999.999/9999-99'
 						variant='red'
-						type='password'
-						label='Senha'
-						placeholder='Digite sua senha'
+						label='CNPJ'
+						placeholder='Digite seu CNPJ'
 						onChange={(value) => handleSetCNPJ(value)}
 						style={{ marginBottom: '36px' }}
 					/>
 
 					<Button
-						type='button'
+						type='submit'
 						content='Enviar'
 						variant='red'
+						loading={isLoading}
 						onClick={handleSubmit}
 					/>
 				</Form>

@@ -1,8 +1,12 @@
-import { DuplicatedBilletForm } from '@components/DuplicatedBilletForm'
-import { Header } from '@components/Header'
-import { IntranetFooter } from '@components/IntranetFooter'
+import { useState } from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
+
+import { Billets } from '@components/Billets'
+import { Billet, DuplicatedBilletForm } from '@components/DuplicatedBilletForm'
+import { Header } from '@components/Header'
+import { IntranetFooter } from '@components/IntranetFooter'
+import { Scripts } from '@components/Scripts'
 
 const Container = styled.main`
 	height: 100%;
@@ -13,6 +17,8 @@ const Container = styled.main`
 `
 
 export default function DuplicateBillet() {
+	const [billets, setBillets] = useState<Billet[]>([])
+
 	return (
 		<>
 			<Head>
@@ -24,8 +30,11 @@ export default function DuplicateBillet() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<Container>
+				<Scripts />
 				<Header />
-				<DuplicatedBilletForm />
+				<DuplicatedBilletForm setBillets={setBillets} />
+
+				<Billets billets={billets} />
 
 				<IntranetFooter />
 			</Container>

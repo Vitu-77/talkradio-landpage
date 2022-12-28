@@ -1,6 +1,7 @@
 import { Header } from '@components/Header'
 import { IntranetFooter } from '@components/IntranetFooter'
 import { IntranetLoginForm } from '@components/IntranetLoginForm'
+import { Scripts } from '@components/Scripts'
 import Head from 'next/head'
 import styled from 'styled-components'
 
@@ -24,10 +25,9 @@ export default function LoginIntranet() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<Container>
+				<Scripts />
 				<Header />
-
 				<IntranetLoginForm />
-
 				<IntranetFooter />
 			</Container>
 		</>

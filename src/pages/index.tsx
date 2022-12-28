@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Script from 'next/script'
 
 import { ContactUs } from '@components/ContactUs'
 import { ContactUsForm } from '@components/ContactUsForm'
@@ -7,6 +8,7 @@ import { Header } from '@components/Header'
 import { HomeCover } from '@components/HomeCover'
 import { Partners } from '@components/Partners'
 import { Programs } from '@components/Programs'
+import { Scripts } from '@components/Scripts'
 
 export default function Home() {
 	return (
@@ -20,6 +22,7 @@ export default function Home() {
 				/>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
+			<Scripts />
 			<Header />
 			<HomeCover />
 			<ContactUs />
