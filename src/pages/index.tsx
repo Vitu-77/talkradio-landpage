@@ -14,7 +14,7 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>Talk Rádio +</title>
+				<title>Talk Radio+</title>
 				<meta
 					name='description'
 					content='Somos a TalkRadio+ uma empresa que cria soluções para o rádio,

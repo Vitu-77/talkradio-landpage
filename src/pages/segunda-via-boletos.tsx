@@ -22,7 +22,7 @@ export default function DuplicateBillet() {
 	return (
 		<>
 			<Head>
-				<title>Segunda via de boletos</title>
+				<title>Talk Radio+ | Segunda via de boletos</title>
 				<meta
 					name='description'
 					content='Os pagamentos realizados por boletos ou carnês são identificados em até 3 dias. Fale com a Talk Radio se quiser trocar para pagamento recorrente.'

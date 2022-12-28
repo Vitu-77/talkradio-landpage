@@ -17,7 +17,7 @@ export default function LoginIntranet() {
 	return (
 		<>
 			<Head>
-				<title>Login na intranet</title>
+				<title>Talk Radio+ | Login na intranet</title>
 				<meta
 					name='description'
 					content='Faça login na intranet, uso exclusivo das afiliadas Talk Radio.'
