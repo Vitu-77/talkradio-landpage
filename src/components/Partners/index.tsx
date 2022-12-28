@@ -1,6 +1,6 @@
 import { InfiniteSlide } from '@components/InfiniteSlide'
 import { FC } from 'react'
-import { Container } from './styles'
+import { Container, InnerContainer } from './styles'
 
 import img01 from '../../../public/partners/01.png'
 import img02 from '../../../public/partners/02.png'
@@ -35,14 +35,16 @@ const images = [
 export const Partners: FC = () => {
 	return (
 		<Container id='parceiros'>
-			<h2>Nossas afiliadas</h2>
+			<InnerContainer>
+				<h2>Nossas afiliadas</h2>
 
-			<InfiniteSlide images={images} />
-			<InfiniteSlide
-				images={images}
-				style={{ marginTop: '50px' }}
-				direction='reverse'
-			/>
+				<InfiniteSlide images={images} />
+				<InfiniteSlide
+					images={images}
+					style={{ marginTop: '50px' }}
+					direction='reverse'
+				/>
+			</InnerContainer>
 		</Container>
 	)
 }

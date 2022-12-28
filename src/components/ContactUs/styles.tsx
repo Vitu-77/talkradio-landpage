@@ -1,24 +1,30 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`
+
+export const InnerContainer = styled.section`
+	width: 1000px;
+	max-width: 90vw;
 	background: var(--white);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 45px 156px;
+	padding: 45px 0;
 
-	@media (max-width: 1120px) {
-		padding: 45px 80px;
-	}
-
-	@media (max-width: 973) {
-		padding: 45px 60px;
+	@media (max-width: 1300px) {
+		width: 100%;
+		max-width: 100%;
+		padding: 32px 64px;
 	}
 
 	@media (max-width: 768px) {
 		flex-direction: column;
-
-		padding: 0px;
+		padding: 0;
 	}
 `
 
@@ -109,7 +115,7 @@ export const MobileImageBg = styled.div`
 	height: 100%;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: top;
+	background-position: center;
 `
 
 export const MobileImageContainer = styled.div`

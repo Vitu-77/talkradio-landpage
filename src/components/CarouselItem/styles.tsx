@@ -19,9 +19,7 @@ export const Container = styled.article`
 	}
 
 	@media (max-width: 512px) {
-		width: 300px;
-		min-width: 300px;
-		max-width: 300px;
+		min-width: 80vw;
 	}
 `
 

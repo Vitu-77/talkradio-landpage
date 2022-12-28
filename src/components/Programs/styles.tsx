@@ -1,20 +1,17 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	background: var(--blue-primary);
-	padding: 64px 156px;
+	padding: 64px 0;
+`
 
-	@media (max-width: 960px) {
-		padding: 64px 96px;
-	}
-
-	@media (max-width: 768px) {
-		padding: 64px 56px;
-	}
-
-	@media (max-width: 512px) {
-		padding: 64px 26px;
-	}
+export const InnerContainer = styled.section`
+	width: 1000px;
+	max-width: 90vw;
 `
 
 export const Header = styled.header`

@@ -6,6 +6,9 @@ export const Container = styled.section`
 	position: relative;
 	background-size: cover;
 	background-position: bottom;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
 
 	@media (max-width: 768px) {
 		height: calc(100vh - 80px);
@@ -27,7 +30,8 @@ export const Overlay = styled.div`
 `
 
 export const TextSection = styled.article`
-	width: 100%;
+	width: 1600px;
+	max-width: 90vw;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -59,6 +63,11 @@ export const TextSection = styled.article`
 		font-size: 18px;
 		margin-bottom: 56px;
 		z-index: 30;
+	}
+
+	@media (max-width: 1400px) {
+		width: 100%;
+		padding: 0 24px 64px 24px;
 	}
 
 	@media (max-width: 768px) {

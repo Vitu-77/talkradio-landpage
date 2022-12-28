@@ -5,7 +5,7 @@ import { CarouselProvider } from '@contexts/Carousel'
 import { CarouselButtons } from '@components/CarouselButtons'
 
 import { programs } from './data'
-import { Container, Header } from './styles'
+import { Container, Header, InnerContainer } from './styles'
 import { PlayerProvider } from '@contexts/Player'
 
 export const Programs: FC = () => {
@@ -15,16 +15,18 @@ export const Programs: FC = () => {
 		<Container id='programas'>
 			<PlayerProvider>
 				<CarouselProvider>
-					<Header>
-						<span className='hidden'></span>
-						<h2>Conheça nossos programas</h2>
-						<CarouselButtons
-							onPrev={() => setPage(page - 1)}
-							onNext={() => setPage(page + 1)}
-						/>
-					</Header>
+					<InnerContainer>
+						<Header>
+							<span className='hidden'></span>
+							<h2>Conheça nossos programas</h2>
+							<CarouselButtons
+								onPrev={() => setPage(page - 1)}
+								onNext={() => setPage(page + 1)}
+							/>
+						</Header>
 
-					<Carousel page={page} items={programs} />
+						<Carousel page={page} items={programs} />
+					</InnerContainer>
 				</CarouselProvider>
 			</PlayerProvider>
 		</Container>
