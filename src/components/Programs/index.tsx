@@ -23,9 +23,7 @@ export const Programs: FC = () => {
 
 	const fetchDemos = useCallback(async () => {
 		try {
-			const { data } = await talkPlayApi.get<{ demos: Demo[] }>(
-				'/talk-play-program-demos'
-			)
+			const { data } = await talkPlayApi.get<{ demos: Demo[] }>('/demos')
 			setDemos(data.demos)
 		} catch (error) {
 			alert('Houve um erro ao buscar as demos de programas')
