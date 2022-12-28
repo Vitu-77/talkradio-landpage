@@ -7,7 +7,7 @@ import { Container, Form, FormContainer } from './styles'
 
 import img from '@assets/contact-us-form.png'
 import Image from 'next/image'
-import { api } from '@http/api'
+import { talkPlayApi } from '@http/talkPlayApi'
 
 type Errors = {
 	phone: boolean
@@ -45,7 +45,7 @@ export const ContactUsForm = () => {
 		const data = { phone: phone.toString(), email, origin: 'TALK-RADIO' }
 
 		try {
-			await api.post('/contact-requests', data)
+			await talkPlayApi.post('/contact-requests', data)
 
 			alert(
 				'Cadastro feito com sucesso, nossa equipe entrará em contato com você em breve.'

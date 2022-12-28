@@ -1,15 +1,40 @@
-import { FC, useState } from 'react'
+import { FC, useCallback, useEffect, useState } from 'react'
 
 import { Carousel } from '@components/Carousel'
 import { CarouselProvider } from '@contexts/Carousel'
 import { CarouselButtons } from '@components/CarouselButtons'
+import { talkPlayApi } from '@http/talkPlayApi'
 
-import { programs } from './data'
 import { Container, Header, InnerContainer } from './styles'
 import { PlayerProvider } from '@contexts/Player'
 
+export type Demo = {
+	_id: string
+	title: string
+	description: string
+	image: string
+	audio: string
+	__v: number
+}
+
 export const Programs: FC = () => {
 	const [page, setPage] = useState(1)
+	const [demos, setDemos] = useState<Demo[]>([])
+
+	const fetchDemos = useCallback(async () => {
+		try {
+			const { data } = await talkPlayApi.get<{ demos: Demo[] }>(
+				'/talk-play-program-demos'
+			)
+			setDemos(data.demos)
+		} catch (error) {
+			alert('Houve um erro ao buscar as demos de programas')
+		}
+	}, [])
+
+	useEffect(() => {
+		fetchDemos()
+	}, [fetchDemos])
 
 	return (
 		<Container id='programas'>
@@ -25,7 +50,7 @@ export const Programs: FC = () => {
 							/>
 						</Header>
 
-						<Carousel page={page} items={programs} />
+						<Carousel page={page} demos={demos} />
 					</InnerContainer>
 				</CarouselProvider>
 			</PlayerProvider>

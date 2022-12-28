@@ -1,5 +1,8 @@
 export const settings = {
-	apiUrl: () => {
-		return process.env.NEXT_PUBLIC_API_URL
+	talkPlayApiUrl: () => {
+		return process.env.NEXT_PUBLIC_TALK_PLAY_API_URL
+	},
+	intranetApiUrl: () => {
+		return process.env.NEXT_PUBLIC_INTRANET_API_URL
 	},
 }

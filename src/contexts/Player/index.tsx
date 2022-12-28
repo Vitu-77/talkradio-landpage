@@ -10,11 +10,11 @@ import {
 
 export type StartProps = {
 	src: string
-	id: number
+	id: number | string
 } | null
 
 export interface IPlayerContext {
-	id: number | null
+	id: number | string | null
 	src: string | null
 	start?: (props: StartProps) => void
 	stop?: () => void
@@ -26,7 +26,7 @@ export const PlayerContext = createContext<IPlayerContext>({
 })
 
 export const PlayerProvider: FC<{ children: ReactNode }> = (props) => {
-	const [id, setId] = useState<number | null>(null)
+	const [id, setId] = useState<number | string | null>(null)
 	const [src, setSrc] = useState<string | null>(null)
 	const [audio, setAudio] = useState<HTMLAudioElement | null>(null)
 

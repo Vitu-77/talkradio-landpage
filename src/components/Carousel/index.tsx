@@ -4,6 +4,7 @@ import { StaticImageData } from 'next/image'
 import { useCarousel } from '@contexts/Carousel'
 import { Container } from './styles'
 import { CarouselItem } from '@components/CarouselItem'
+import { Demo } from '@components/Programs'
 
 export type CarouselItemProps = {
 	title: string
@@ -15,12 +16,12 @@ export type CarouselItemProps = {
 
 export type CarouselProps = {
 	page: number
-	items: CarouselItemProps[]
+	demos: Demo[]
 }
 
 const CARD_WIDTH = 450
 
-export const Carousel: FC<CarouselProps> = ({ page, items }) => {
+export const Carousel: FC<CarouselProps> = ({ page, demos }) => {
 	const carousel = useCarousel()
 	const ref = useRef<HTMLDivElement>(null)
 
@@ -58,8 +59,8 @@ export const Carousel: FC<CarouselProps> = ({ page, items }) => {
 
 	return (
 		<Container ref={ref} onScroll={() => handleScroll()}>
-			{items.map((item, index) => (
-				<CarouselItem key={index} {...item} />
+			{demos.map((demo, index) => (
+				<CarouselItem key={index} {...demo} />
 			))}
 		</Container>
 	)

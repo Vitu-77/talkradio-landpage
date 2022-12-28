@@ -11,7 +11,7 @@ import {
 } from './styles'
 
 import coverBg from '@assets/duplicated-billet.png'
-import { api } from '@http/api'
+import { intranetApi } from '@http/intranetApi'
 
 export type Billet = {
 	ano: string
@@ -59,9 +59,7 @@ export const DuplicatedBilletForm: FC<DuplicatedBilletFormProps> = ({
 			setIsLoading(true)
 
 			try {
-				const response = await api.get<Response>(
-					`https://conteudoradiofonico.com.br/api/bank-slips/${cnpj}`
-				)
+				const response = await intranetApi.get<Response>(`bank-slips/${cnpj}`)
 
 				if (!response.data.bankSlips.length) {
 					alert('Não foram encontrados boletos nesse CNPJ, confira os dados')

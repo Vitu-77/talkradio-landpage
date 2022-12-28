@@ -5,14 +5,15 @@ import { Button } from '@components/Button'
 import { SoundEffect } from '@components/SoundEffect'
 import { Container, Header, Body, Gradient } from './styles'
 import { StartProps, usePlayer } from '@contexts/Player'
-import { CarouselItemProps } from '@components/Carousel'
+import { Demo } from '@components/Programs'
+import { settings } from '@settings/index'
 
-export const CarouselItem: FC<CarouselItemProps> = ({
+export const CarouselItem: FC<Demo> = ({
 	description,
 	image,
-	sound,
+	audio,
 	title,
-	id,
+	_id,
 }) => {
 	const player = usePlayer()
 	const [isHovering, setIsHovering] = useState(false)
@@ -32,15 +33,18 @@ export const CarouselItem: FC<CarouselItemProps> = ({
 		}
 	}, [player])
 
+	const imageSrc = `${settings.talkPlayApiUrl()}/public/uploads/${image}`
+	const audioSrc = `${settings.talkPlayApiUrl()}/public/uploads/${audio}`
+
 	return (
 		<Container>
 			<Header
 				onMouseOver={() => setIsHovering(true)}
 				onMouseOut={() => setIsHovering(false)}
-				style={{ backgroundImage: `url(${image.src})` }}>
+				style={{ backgroundImage: `url(${imageSrc})` }}>
 				<Gradient />
 
-				{player?.id === id ? (
+				{player?.id === _id ? (
 					isHovering ? (
 						<BsStopCircleFill
 							onClick={() => handleStop()}
@@ -53,7 +57,7 @@ export const CarouselItem: FC<CarouselItemProps> = ({
 					)
 				) : (
 					<BsPlayCircleFill
-						onClick={() => handlePlay({ src: sound, id })}
+						onClick={() => handlePlay({ src: audioSrc, id: _id })}
 						style={{ zIndex: 100, cursor: 'pointer' }}
 						color='#FFF'
 						size={100}
